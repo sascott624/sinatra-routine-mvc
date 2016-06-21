@@ -15,4 +15,17 @@ class UserController < ApplicationController
     end
   end
 
+  get '/users/login' do
+    erb :'/users/login'
+  end
+
+  get '/users/logout' do
+    if !session[:user_id].nil?
+      session.destroy
+      redirect to '/users/login'
+    else
+      redirect to '/'
+    end
+  end
+
 end
