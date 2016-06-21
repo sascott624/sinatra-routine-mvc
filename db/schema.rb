@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621185415) do
+ActiveRecord::Schema.define(version: 20160621185756) do
+
+  create_table "routine_tasks", force: :cascade do |t|
+    t.integer "routine_id"
+    t.integer "task_id"
+  end
+
+  create_table "routines", force: :cascade do |t|
+    t.string  "name"
+    t.integer "user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
