@@ -20,7 +20,11 @@ class UserController < ApplicationController
   end
 
   get '/users/login' do
-    erb :'/users/login'
+    if !session[:user_id]
+      erb :'/users/login'
+    else
+      redirect to '/routines/index'
+    end
   end
 
   post '/users/login' do
