@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Routine</title>
+  </head>
+  <body>
+    <h1>Welcome, <%= @user.username %>!</h1>
+    <h3><i>Create a new routine:</i></h3>
+    <form class="new_routine" action="/routines/new" method="post">
+      <h4>Routine Name: <input type="text" name="routine[name]"></h4>
+      <h4>Routine Schedule: </h4>
+        <% Day.all.each do |day| %>
+        <input type="checkbox" name="routine[schedule][]" value="<%= day.id %>"><%= day.name %>
+        <% end %>
+      <p>
+        Choose tasks: <% Task.all.each do |task| %><br>
+        <input type="checkbox" name="routine[tasks][]" value="<%= task.id %>"><%= task.name %> <br>
+        <% end %>
+        <br>
+        <i>or, create a new task:</i>
+        <input type="text" name="task[name]">
+      </p>
+      <br>
+      <input type="submit" value="Create Routine">
+    </form>
+  </body>
+</html>
