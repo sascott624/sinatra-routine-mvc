@@ -44,4 +44,21 @@ class RoutinesController < ApplicationController
     end
   end
 
+  get '/routines/:id/edit' do
+    if session[:user_id]
+    @routine = Routine.find_by_id(params[:id])
+      if @routine.user_id == session[:user_id]
+        erb :'/routines/edit'
+      else
+        redirect to '/routines/index'
+      end
+    else
+      redirect to '/'
+    end
+  end
+
+  patch '/routines/:id' do
+    redirect to '/'
+  end
+
 end

@@ -18,5 +18,9 @@
       <li><%= task.name %></li>
       <% end %>
     </ul>
+    <form action="/routines/<%= @routine.id %>/edit" method="post">
+      <input type="hidden" name="_method" value="patch" id="hidden">
+      <input type="submit" value="Edit Routine">
+    </form>
   </body>
 </html>
