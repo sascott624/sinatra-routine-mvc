@@ -6,8 +6,19 @@
   </head>
   <body>
     <h1>Welcome, <%= @user.username %>!</h1>
-    ---- links to your routines<br>
-    ---- option to create new routine<br>
-    ---- link to logout
+    <% if @user.routines.empty? %>
+    <h3><i>Oops! You don't have any routines listed. Click <a href="/routines/new">here</a> to create a new routine.</i></h3>
+    <% else %>
+    <h3><i>Your routines:</i></h3>
+    <ul>
+      <% @user.routines.each do |routine| %>
+      <li> <a href="/routines/<%= routine.id %>"><%= routine.name %></a></li>
+      <% end %>
+    </ul>
+
+    <h3>Click <a href="/routines/new">here</a> to create a new routine.</i></h3>
+    <% end %>
+
+    <a href="/users/logout">Logout</a>
   </body>
 </html>

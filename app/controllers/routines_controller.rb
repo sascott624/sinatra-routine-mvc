@@ -9,4 +9,12 @@ class RoutinesController < ApplicationController
     end
   end
 
+  get '/routines/new' do
+    erb :'/routines/new'
+  end
+
+  get '/routines/:id' do
+    erb :'routines/show'
+  end
+
 end
