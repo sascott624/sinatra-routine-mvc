@@ -1,1 +1,26 @@
-Edit routine
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit <%= @routine.name %></title>
+  </head>
+  <body>
+    <form action="/routines/edit" method="post">
+      <input type="hidden" name="_method" value="patch" id="hidden">
+
+    <h1>Routine Name: <input type="text" name="routine[name]" value="<%= @routine.name %>"></h1>
+    <h3><i>Routine Schedule:</i></h3>
+    <p>
+      <% Day.all.each do |day| %>
+      <input type="checkbox" name="routine[day_ids][]" value="<%= day.name %>" <%='checked' if @routine.days.include?(day) %>><%= day.name %><br>
+      <% end %>
+    </p>
+    <h3><i>Routine Tasks:</i></h3>
+    <ul>
+      <% Task.all.each do |task| %>
+      <li><input type="checkbox" name="routine[task_ids][]" value="<%= task.name %>" <%='checked' if @routine.tasks.include?(task) %>> <%= task.name %></li>
+      <% end %>
+    </ul>
+    </form>
+  </body>
+</html>
