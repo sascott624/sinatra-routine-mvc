@@ -5,7 +5,10 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use Rack::Flash
+
 use UsersController
 use RoutinesController
 use TasksController
+
 run ApplicationController
