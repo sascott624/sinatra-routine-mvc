@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   get '/users/signup' do
     if !session[:user_id]
