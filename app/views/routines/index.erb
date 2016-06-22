@@ -14,10 +14,12 @@
       <% @user.routines.each do |routine| %>
       <li> <a href="/routines/<%= routine.id %>"><%= routine.name %></a></li>
       <% end %>
-    </ul>
+    </ul><br>
 
     <h3>Click <a href="/routines/new">here</a> to create a new routine.</i></h3>
     <% end %>
+    <br>
+    <a href="/tasks/index">View Available Tasks</a><br><br>
 
     <a href="/users/logout">Logout</a>
   </body>
