@@ -5,6 +5,9 @@
     <title>Edit <%= @routine.name %></title>
   </head>
   <body>
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
     <form action="/routines/<%= @routine.id %>/edit" method="post">
       <input type="hidden" name="_method" value="patch" id="hidden">
 

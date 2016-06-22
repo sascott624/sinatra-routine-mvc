@@ -5,6 +5,7 @@ class RoutinesController < ApplicationController
       @user = User.find_by_id(session[:user_id])
       erb :'/routines/index'
     else
+      flash[:message] = "Please signup or login to view your routines."
       redirect to '/'
     end
   end
@@ -14,6 +15,7 @@ class RoutinesController < ApplicationController
       @user = User.find_by_id(session[:user_id])
       erb :'/routines/new'
     else
+      flash[:message] = "Please signup or login to view your routines."
       redirect to '/'
     end
   end
@@ -29,6 +31,7 @@ class RoutinesController < ApplicationController
       @routine.save
       redirect to "/routines/#{@routine.id}"
     else
+      flash[:message] = "Routines cannot be created without a name!"
       redirect to '/routines/new'
     end
   end
@@ -39,6 +42,7 @@ class RoutinesController < ApplicationController
       @routine = Routine.find_by_id(params[:id])
       erb :'routines/show'
     else
+      flash[:message] = "Please signup or login to view your routines."
       redirect to '/'
     end
   end
@@ -50,9 +54,11 @@ class RoutinesController < ApplicationController
       if @user.id == session[:user_id]
         erb :'/routines/edit'
       else
+        flash[:message] = "Oops! You don't have access to edit that routine."
         redirect to '/routines/index'
       end
     else
+      flash[:message] = "Please signup or login to view your routines."
       redirect to '/'
     end
   end
@@ -67,6 +73,7 @@ class RoutinesController < ApplicationController
       @routine.save
       redirect to "/routines/#{@routine.id}"
     end
+    flash[:message] = "Routines cannot be created without a name!"
     redirect to "/routines/#{@routine.id}/edit"
   end
 
@@ -76,11 +83,13 @@ class RoutinesController < ApplicationController
       @user = User.find_by_id(@routine.id)
       if @user.id == session[:user_id]
         @routine.delete
+        flash[:message] = "Routine successfully deleted."
         redirect to '/routines/index'
       else
         redirect to '/routines/index'
       end
     else
+      flash[:message] = "Please signup or login to view your routines."
       redirect to '/'
     end
   end

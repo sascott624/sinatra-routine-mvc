@@ -5,6 +5,9 @@
     <title>Routine Tracker: Signup</title>
   </head>
   <body>
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
     <h1>Welcome to the Routine Tracker!</h1>
     <h4>
       Please enter a username, email, and password to signup:

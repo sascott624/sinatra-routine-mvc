@@ -5,6 +5,9 @@
     <title>New Routine</title>
   </head>
   <body>
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
     <h1>Welcome, <%= @user.username %>!</h1>
     <h3><i>Create a new routine:</i></h3>
     <form class="new_routine" action="/routines/new" method="post">

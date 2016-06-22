@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+  use Rack::Flash
 
   get '/users/signup' do
     if !session[:user_id]
@@ -15,6 +18,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect to '/routines/index'
     else
+      flash[:message] = "Error: users must enter a username and email to sign up!"
       redirect to '/users/signup'
     end
   end
@@ -33,6 +37,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect to '/routines/index'
     else
+      flash[:message] = "Error: username and/or password do not match our records. Please signup to continue!"
       redirect to '/users/signup'
     end
   end

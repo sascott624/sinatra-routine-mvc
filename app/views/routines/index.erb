@@ -5,6 +5,9 @@
     <title>Your Routines</title>
   </head>
   <body>
+    <% if flash.has?(:message) %>
+      <%= flash[:message] %>
+    <% end %>
     <h1>Welcome, <%= @user.username %>!</h1>
     <% if @user.routines.empty? %>
     <h3><i>Oops! You don't have any routines listed. Click <a href="/routines/new">here</a> to create a new routine.</i></h3>
