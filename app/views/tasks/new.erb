@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Task</title>
+  </head>
+  <body>
+    <h1>Task Index:</h1>
+    <% Task.all.each do |task| %>
+    <ul>
+      <li><%= task.name %></li>
+      <% end %>
+    </ul>
+    <h3><i>Create a new task:</i></h3>
+    <form action="/tasks/new" method="post">
+      New Task: <input type="text" name="task[name]">
+      <input type="submit" value="Create Task">
+    </form>
+  </body>
+</html>
