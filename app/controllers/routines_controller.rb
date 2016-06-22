@@ -70,5 +70,20 @@ class RoutinesController < ApplicationController
     redirect to "/routines/#{@routine.id}/edit"
   end
 
+  get '/routines/:id/delete' do
+    @routine = Routine.find_by_id(params[:id])
+    if session[:user_id]
+      @user = User.find_by_id(@routine.id)
+      if @user.id == session[:user_id]
+        @routine.delete
+        redirect to '/routines/index'
+      else
+        redirect to '/routines/index'
+      end
+    else
+      redirect to '/'
+    end
+  end
+
 
 end
