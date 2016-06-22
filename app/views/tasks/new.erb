@@ -5,12 +5,7 @@
     <title>New Task</title>
   </head>
   <body>
-    <h1>Task Index:</h1>
-    <% Task.all.each do |task| %>
-    <ul>
-      <li><%= task.name %></li>
-    </ul>
-    <% end %>
+
     <h3><i>Create a new task:</i></h3>
     <form action="/tasks/new" method="post">
       New Task: <input type="text" name="task[name]">

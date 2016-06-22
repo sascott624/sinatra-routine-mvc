@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Task</title>
+  </head>
+  <body>
+    <h1>Task Index:</h1>
+    <% Task.all.each do |task| %>
+    <ul>
+      <li><%= task.name %></li>
+    </ul>
+    <% end %>
+    <a href="/tasks/new">New Task</a>
+  </body>
+</html>
