@@ -7,4 +7,16 @@ class TasksController < ApplicationController
       redirect to '/'
     end
   end
+
+  post '/tasks/new' do
+    if session[:user_id]
+      if !params[:task][:name].empty?
+        @task = Task.create(params[:task])
+        @task.save
+        redirect to '/tasks/index'
+      end
+      redirect to '/tasks/index'
+    end
+    redirect to '/'
+  end
 end
